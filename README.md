@@ -7,4 +7,3 @@ https://www.safaribooksonline.com/library/view/learning-path-python/978178847994
 
 
 ## Document Page
-pred_fx: https://iwasa-isfactory.github.io/MyStudy/
