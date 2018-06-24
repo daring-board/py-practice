@@ -5,6 +5,9 @@ from keras.models import Sequential, load_model
 from keras.layers import Dense, Dropout
 from keras.optimizers import RMSprop
 import numpy as np
+from PIL import Image
+from matplotlib import pylab as plt
+from scipy.misc import imresize
 
 class Predictor():
 
@@ -13,6 +16,18 @@ class Predictor():
 
     def predict(self, img):
         img = img.reshape(1, 784)
-        img = img.astype('float32')
         pred = self.model.predict_classes(img)
         return pred
+
+if __name__=='__main__':
+    # 画像の読み込み
+    img = np.array(Image.open('sample.png').convert('L'))
+    img = imresize(img, (28,28))
+
+    # 画像の表示
+    plt.imshow(img)
+    plt.show()
+
+    img = img.astype('float32')
+    prd = Predictor()
+    print(prd.predict(img))

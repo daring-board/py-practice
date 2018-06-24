@@ -5,6 +5,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping, ProgbarLogger, ReduceLROnPlateau, LambdaCallback
 from keras.optimizers import RMSprop, SGD, Adam
+import matplotlib.pyplot as plt
 
 def main():
     batch_size = 128 # バッチサイズ(データサイズ)
@@ -13,6 +14,13 @@ def main():
 
     # mnistデータセット（訓練用データと検証用データ）をネットから取得
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
+    #MNISTデータの表示
+    fig = plt.figure(figsize=(9, 9))
+    fig.subplots_adjust(left=0, right=1, bottom=0, top=0.5, hspace=0.05, wspace=0.05)
+    for i in range(81):
+        ax = fig.add_subplot(9, 9, i + 1, xticks=[], yticks=[])
+        ax.imshow(x_train[i].reshape((28, 28)), cmap='gray')
+    plt.show()
 
     # 2次元配列から1次元配列へ変換（784次元のベクトル）
     x_train = x_train.reshape(60000, 784)

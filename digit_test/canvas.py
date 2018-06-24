@@ -32,7 +32,7 @@ class CanvasWidget(Widget):
             # add line primitive
             Color(*get_color_from_hex("#0080FF80"))
             touch.ud['current_line'] = Line(
-                points=(touch.x, touch.y), width=10)
+                points=(touch.x, touch.y), width=20)
 
     def on_touch_move(self, touch):
         if Widget.on_touch_down(self, touch):
